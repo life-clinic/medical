@@ -6,7 +6,7 @@
     <title>LifeClinic Premium | Сучасний медичний центр у Долині</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    
+    <link rel="icon" type="image/x-icon" href="logo.png">
     <style>
         :root {
             --dark: #0f1c2e;
@@ -257,15 +257,16 @@
         <p style="font-size: 1.1rem; margin-bottom: 25px;">Досвідчений сімейний лікар, понад 14 років практики. Спеціалізується на доказовій терапії та індивідуальному супроводі.</p>
         <ul style="list-style: none; display: grid; grid-template-columns: 1fr; gap: 12px; font-weight: 600;">
             <li>✓ Повний медогляд та лікування</li>
-            <li>✓ Направлення на УЗД та аналізи</li>
+            <li>✓ Направлення до профільних спеціалістів</li>
             <li>✓ Складання індивідуального календаря щеплень</li>
             <li>✓ Супровід документів на групу інвалідності</li>
-            <li>✓ Виписування рецептів на ліки</li>
+            <li>✓ Виписка рецептів по програмі НЗСУ "Доступниі ліки"</li>
         </ul>
     </div>
 </section>
 
 <section class="steps">
+
     <h2 class="section-title" style="font-size: 2.2rem;">Як проходить візит?</h2>
     <div class="steps-grid">
         <div class="step-card">
@@ -367,18 +368,20 @@
             <a href="#doctor">Наш лікар</a>
             <a href="#book">Онлайн-запис</a>
         </div>
-        <div class="footer-col">
-            <h4>Контакти</h4>
-            <p>📍 м. Долина, пр. Незалежності 4</p>
-            <p>📞 +38 (099) 738-07-84</p>
-            <p>📧 life.clinic.medical@gmail.com</p>
+       <div class="footer-col">
+    <h4>Графік</h4>
+    
+    <div style="margin-bottom: 15px;">
+        <div id="work-status-container" style="padding: 8px 15px; border-radius: 50px; display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; background: rgba(255,255,255,0.1);">
+            <span id="status-dot" style="height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #cbd5e1;"></span>
+            <span id="status-text" style="color: white;">Завантаження...</span>
         </div>
-        <div class="footer-col">
-            <h4>Графік</h4>
-            <p>Пн — Пт: 09:00 — 16:00</p>
-            <p>Сб: 10:00 — 15:00</p>
-            <p>Нд: Вихідний</p>
-        </div>
+    </div>
+
+    <p>Пн — Пт: 09:00 — 16:00</p>
+    <p>Сб: 10:00 — 15:00</p>
+    <p>Нд: Вихідний</p>
+    </div>
     <div style="text-align: center; padding-top: 40px; font-size: 13px; opacity: 0.5; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px;">
         &copy; 2026 LifeClinic Medical Center. Всі права захищено. <br>Розробка та підтримка — LifeClinic Digital.
      </div>
@@ -465,5 +468,66 @@
         }
     }
 </style>
+<script>
+document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        let w = card.clientWidth;
+        let h = card.clientHeight;
+        let rx = (y - h / 2) / h * 20; // Кут нахилу по X
+        let ry = (x - w / 2) / w * -20; // Кут нахилу по Y
+        card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+});
+<script>
+function updateWorkStatus() {
+    const now = new Date();
+    const day = now.getDay(); // 0 - Неділя, 1 - Понеділок...
+    const hour = now.getHours();
+    const min = now.getMinutes();
+    
+    // Перетворюємо час у хвилини для точного розрахунку
+    const currentTime = hour * 60 + min;
+
+    const dot = document.getElementById('status-dot');
+    const text = document.getElementById('status-text');
+    const container = document.getElementById('work-status-container');
+
+    if (!dot || !text) return; // Захист від помилок
+
+    let isOpen = false;
+
+    // Графік: Пн-Пт (1-5) 9:00-18:00, Сб (6) 9:00-14:00
+    if (day >= 1 && day <= 5) {
+        if (currentTime >= 9*60 && currentTime < 18*60) isOpen = true;
+    } else if (day === 6) {
+        if (currentTime >= 9*60 && currentTime < 14*60) isOpen = true;
+    }
+
+    if (isOpen) {
+        container.style.background = 'rgba(16, 185, 129, 0.1)';
+        dot.style.background = '#10b981';
+        dot.style.boxShadow = '0 0 10px #10b981';
+        text.style.color = '#065f46';
+        text.innerText = 'Зараз відкрито — завітайте до нас';
+    } else {
+        container.style.background = 'rgba(239, 68, 68, 0.1)';
+        dot.style.background = '#ef4444';
+        dot.style.boxShadow = 'none';
+        text.style.color = '#991b1b';
+        text.innerText = 'Зараз зачинено — запишіться онлайн';
+    }
+}
+
+// Запускаємо відразу при завантаженні
+window.addEventListener('DOMContentLoaded', updateWorkStatus);
+// Оновлюємо кожну хвилину
+setInterval(updateWorkStatus, 60000);
+</script>
 </body>
 </html>
