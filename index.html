@@ -375,15 +375,95 @@
         </div>
         <div class="footer-col">
             <h4>Графік</h4>
-            <p>Пн — Пт: 09:00 — 18:00</p>
+            <p>Пн — Пт: 09:00 — 16:00</p>
             <p>Сб: 10:00 — 15:00</p>
             <p>Нд: Вихідний</p>
         </div>
-    </div>
     <div style="text-align: center; padding-top: 40px; font-size: 13px; opacity: 0.5; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px;">
         &copy; 2026 LifeClinic Medical Center. Всі права захищено. <br>Розробка та підтримка — LifeClinic Digital.
-    </div>
-</footer>
+     </div>
+    <footer>
+        <div class="footer-grid"><section id="map" style="padding: 60px 0 0 0; background: #f8fafc;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <span style="color: #3b82f6; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 2px;">Локація</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #1e3a8a;">Як нас знайти</h2>
+        </div>
+        
+        <div style="width: 100%; height: 450px; border: 0; overflow: hidden; box-shadow: 0 -10px 30px rgba(0,0,0,0.05);">
+            <iframe 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2619.0598513870314!2d23.96664697631259!3d48.97138507134772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473a05feb8faeb91%3A0x8e212cc5009d38d9!2z0L_RgNC-0YHQv9C10LrRgiDQndC10LfQsNC70LXQttC90L7RgdGC0ZYsIDTQsiwg0JTQvtC70LjQvdCwLCDQhtCy0LDQvdC-LdCk0YDQsNC90LrRltCy0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDc3NTAw!5e0!3m2!1suk!2sua!4v1772206395133!5m2!1suk!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
 
+    <footer>
+        <div class="footer-grid">
+</footer>
+<a href="tel:+380997380784" class="glow-call-btn" title="Зателефонувати нам">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.23 16.27l-4.11-1.37a1.05 1.05 0 00-1.1.28l-1.83 2.23a15.76 15.76 0 01-6.79-6.79l2.23-1.83a1.05 1.05 0 00.28-1.1L9.73 3.77a1.06 1.06 0 00-1.22-.64l-4.11 1.03c-.48.12-.81.56-.81 1.06 0 9.8 7.95 17.75 17.75 17.75.5 0 .94-.33 1.06-.81l1.03-4.11a1.06 1.06 0 00-.64-1.22z" fill="white"/>
+    </svg>
+</a>
+
+<style>
+    .glow-call-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #10b981;
+        color: white;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        
+        /* Початкове світіння */
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        animation: pulse-glow 2s infinite; /* Запуск анімації світіння */
+    }
+
+    /* Анімація пульсуючого світіння */
+    @keyframes pulse-glow {
+        0% {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            transform: scale(1);
+        }
+        70% {
+            box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
+            transform: scale(1.05);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            transform: scale(1);
+        }
+    }
+
+    .glow-call-btn:hover {
+        background: #059669;
+        animation: none; /* Зупиняємо пульсацію при наведенні, щоб не заважала натиснути */
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+    }
+
+    /* Для мобільних */
+    @media (max-width: 480px) {
+        .glow-call-btn {
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
+        }
+    }
+</style>
 </body>
 </html>
