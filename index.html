@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LifeClinic Premium | Сучасний медичний центр у Долині</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="logo.png">
     <style>
@@ -326,30 +325,42 @@
         </div>
 
         <div class="booking-form">
-            <form action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="2e6a286c-9898-4e0e-a25a-011394860bee">
-                <input type="checkbox" name="botcheck" style="display: none;">
-                <input type="hidden" name="from_name" value="LifeClinic Сайт">
+            <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
-                <label>Ваше ім'я</label>
-                <input type="text" name="name" placeholder="Прізвище та Ім'я" required>
-                
-                <label>Номер телефону</label>
-                <input type="tel" name="phone" placeholder="+38 (0__) ___-__-__" required>
+<div class="booking-form">
+    <form action="https://api.web3forms.com/submit" method="POST">
+        
+        <input type="hidden" name="access_key" value="2e6a286c-9898-4e0e-a25a-011394860bee">
+        <input type="hidden" name="from_name" value="LifeClinic Сайт">
+        
+        <input type="checkbox" name="botcheck" style="display: none;">
 
-                <label>Оберіть послугу</label>
-                <select name="service">
-                    <option>Консультація лікаря</option>
-                    <option>Педіатричний огляд</option>
-                    <option>ЕКГ / Консультація</option>
-                    <option>Аналізи</option>
-					<option>Вакцинація</option>
-                </select>
+        <label>Ваше ім'я</label>
+        <input type="text" name="name" placeholder="Прізвище та Ім'я" required>
+        
+        <label>Номер телефону</label>
+        <input type="tel" name="phone" placeholder="+38 (0__) --_" required>
 
-                <label>Коментар лікаря</label>
-                <textarea name="message" placeholder="Опишіть коротко вашу проблему..." style="height: 100px; resize: none;"></textarea>
-                <div class="g-recaptcha" data-sitekey="6LcB7XgsAAAAABRMhGS2GOjojiwtMLpL331Ni7AD" style="margin-bottom: 20px; display: flex; justify-content: center;"></div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px;">Забронювати візит</button>
+        <label>Оберіть послугу</label>
+        <select name="service">
+            <option>Консультація лікаря</option>
+            <option>Педіатричний огляд</option>
+            <option>ЕКГ / Консультація</option>
+            <option>Аналізи</option>
+            <option>Вакцинація</option>
+        </select>
+
+        <label>Коментар лікаря</label>
+        <textarea name="message" placeholder="Опишіть коротко вашу проблему..." style="height: 100px; resize: none;"></textarea>
+
+        <div style="margin: 15px 0;">
+            <div class="h-captcha" data-sitekey="2f470533-3bc3-448c-8975-d144e69b007c"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px;">Забронювати візит</button>
+
+    </form>
+</div>
             </form>
         </div>
     </div>
